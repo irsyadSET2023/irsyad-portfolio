@@ -44,6 +44,9 @@ const Navbar = () => {
             <Link to="/about">
               <Button variant="ghost">About</Button>
             </Link>
+            <Link to="/experience">
+              <Button variant="ghost">Experience</Button>
+            </Link>
             <Link to="/projects">
               <Button variant="ghost">Projects</Button>
             </Link>
@@ -112,6 +115,15 @@ const Navbar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About
+                </Button>
+              </Link>
+              <Link to="/experience" className="w-full">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Experience
                 </Button>
               </Link>
               <Link to="/projects" className="w-full">

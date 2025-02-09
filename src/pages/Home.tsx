@@ -1,11 +1,20 @@
 import StackIcon from 'tech-stack-icons';
 
-const TechStack = ({ name }: { name: string }) => (
+interface TechStackProps {
+  name: string;
+  customIcon?: string;
+}
+
+const TechStack = ({ name, customIcon }: TechStackProps) => (
   <div className="group flex items-center gap-3 p-2.5 rounded-lg hover:bg-accent/10 transition-all duration-300">
     <div className="relative flex items-center">
       <div className="absolute inset-0 bg-primary/5 rounded-md blur-sm group-hover:bg-primary/15 transition-all duration-300" />
       <div className="relative p-2 rounded-md bg-background border shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-        <StackIcon name={name.toLowerCase()} className="w-5 h-5" />
+        {customIcon ? (
+          <img src={customIcon} alt={name} className="w-5 h-5 object-contain" />
+        ) : (
+          <StackIcon name={name.toLowerCase()} className="w-5 h-5" />
+        )}
       </div>
     </div>
     <span className="font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
@@ -37,47 +46,64 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-card p-6 rounded-lg border hover:shadow-lg transition-all">
-            <h2 className="text-xl font-semibold mb-4">Development Stack </h2>
+            <h2 className="text-xl font-semibold mb-4">Development Stack</h2>
             <div className="space-y-1">
               <TechStack name="Laravel" />
-              <TechStack name="vuejs" />
-              <TechStack name="strapi" />
-              <TechStack name="express" />
-              <TechStack name="nestjs" />
-              <TechStack name="nextjs" />
+              <TechStack name="Vuejs" />
+              <TechStack
+                name="Strapi"
+                customIcon="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/strapi.png"
+              />
+              <TechStack
+                name="Express"
+                customIcon="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/express.png"
+              />
+              <TechStack name="Nestjs" />
+              <TechStack name="Nextjs" />
             </div>
           </div>
 
           <div className="bg-card p-6 rounded-lg border hover:shadow-lg transition-all">
-            <h2 className="text-xl font-semibold mb-4">
-              Deployment platforms and tools
-            </h2>
+            <h2 className="text-xl font-semibold mb-4">Database Stack</h2>
             <div className="space-y-1">
-              <TechStack name="cloudflare" />
-              <TechStack name="digitalocean" />
-              <TechStack name="render" />
-              <TechStack name="nginx" />
-              <TechStack name="docker" />
+              <TechStack name="Mysql" />
+              <TechStack name="Postgresql" />
+              <TechStack name="Redis" />
+              <TechStack name="Mongodb" />
             </div>
           </div>
 
-          <div className="bg-card p-6 rounded-lg border hover:shadow-lg transition-all md:col-span-2">
+          <div className="bg-card p-6 rounded-lg border hover:shadow-lg transition-all">
+            <h2 className="text-xl font-semibold mb-4">Deployment Tools</h2>
+            <div className="space-y-1">
+              <TechStack name="Cloudflare" />
+              <TechStack name="Digitalocean" />
+              <TechStack name="Render" />
+              <TechStack
+                name="Nginx"
+                customIcon="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/nginx.png"
+              />
+            </div>
+          </div>
+
+          <div className="bg-card p-6 rounded-lg border hover:shadow-lg transition-all md:col-span-3">
             <h2 className="text-xl font-semibold mb-3">My Journey So Far</h2>
             <p className="text-muted-foreground">
               In my 1.5 years as a developer, I've gained experience with a
               diverse tech stack, ranging from PHP frameworks like Laravel to
               modern JavaScript frameworks such as Vue.js and Next.js. I've
-              worked with both traditional and headless CMS solutions, and I'm
-              comfortable with various deployment platforms and server
-              configurations. This broad exposure has given me a solid
-              foundation in both frontend and backend development, while
-              maintaining a focus on backend architecture and system design.
+              worked with various database systems, from traditional SQL
+              databases to NoSQL solutions, and I'm comfortable with different
+              deployment platforms and server configurations. This broad
+              exposure has given me a solid foundation in both frontend and
+              backend development, while maintaining a focus on backend
+              architecture and system design.
             </p>
           </div>
 
-          <div className="bg-card p-6 rounded-lg border hover:shadow-lg transition-all md:col-span-2">
+          <div className="bg-card p-6 rounded-lg border hover:shadow-lg transition-all md:col-span-3">
             <h2 className="text-xl font-semibold mb-3">Professional Growth</h2>
             <ul className="space-y-2 text-muted-foreground">
               <li>
@@ -90,7 +116,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+        <div className="flex flex-wrap gap-4 justify-center md:justify-center">
           <a
             href="/projects"
             className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
