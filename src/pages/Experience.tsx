@@ -1,4 +1,6 @@
 import TechStack from '@/components/reusable/tech-stack';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 interface Experience {
   companyLogo: string;
@@ -171,6 +173,11 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => (
 );
 
 const Experience = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
   return (
     <div className="min-h-[80vh] py-6 sm:py-8 px-4">
       <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">

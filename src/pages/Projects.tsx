@@ -7,6 +7,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 interface Project {
@@ -99,6 +100,10 @@ const ProjectCard = ({ project }: { project: Project }) => (
 const Projects = () => {
   const location = useLocation();
   const pathSegments = location.pathname.split('/').filter(Boolean);
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
 
   return (
     <div className="min-h-[80vh] py-6 sm:py-8 px-4">

@@ -8,6 +8,8 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Link, useParams } from 'react-router-dom';
 import { TechStack } from './Projects'; // Import TechStack from Projects
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 interface Project {
   id: string;
@@ -61,6 +63,11 @@ const projects: Project[] = [
 ];
 
 const ProjectDetails = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
   const { projectId } = useParams();
   const project = projects.find((p) => p.id === projectId);
 

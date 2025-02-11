@@ -1,6 +1,13 @@
 import { Button } from '@/components/ui/button';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Contact = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+  }, [location]);
   return (
     <div className="flex min-h-[80vh] items-center justify-center px-4">
       <div className="w-full max-w-md space-y-6">
