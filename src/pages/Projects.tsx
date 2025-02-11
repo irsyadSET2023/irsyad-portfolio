@@ -73,12 +73,10 @@ const ProjectCard = ({ project }: { project: Project }) => (
       </div>
 
       <Link
-        to={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
+        to={`/projects/${project.id}`}
         className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
       >
-        View Project
+        View Details
         <svg
           className="w-4 h-4"
           fill="none"
