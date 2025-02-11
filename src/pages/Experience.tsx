@@ -1,4 +1,4 @@
-import StackIcon from 'tech-stack-icons';
+import TechStack from '@/components/reusable/tech-stack';
 
 interface Experience {
   companyLogo: string;
@@ -13,29 +13,6 @@ interface Experience {
   }>;
   achievements: string[];
 }
-
-interface TechStackProps {
-  name: string;
-  customIcon?: string;
-}
-
-const TechStack = ({ name, customIcon }: TechStackProps) => (
-  <div className="group flex items-center gap-3 p-2 rounded-lg hover:bg-accent/10 transition-all duration-300">
-    <div className="relative flex items-center">
-      <div className="absolute inset-0 bg-primary/5 rounded-md blur-sm group-hover:bg-primary/15 transition-all duration-300" />
-      <div className="relative p-1.5 rounded-md bg-background border shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-        {customIcon ? (
-          <img src={customIcon} alt={name} className="w-4 h-4 object-contain" />
-        ) : (
-          <StackIcon name={name.toLowerCase()} className="w-4 h-4" />
-        )}
-      </div>
-    </div>
-    <span className="font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300 text-sm">
-      {name}
-    </span>
-  </div>
-);
 
 const experiences: Experience[] = [
   {

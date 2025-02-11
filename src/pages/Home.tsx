@@ -1,27 +1,5 @@
-import StackIcon from 'tech-stack-icons';
-
-interface TechStackProps {
-  name: string;
-  customIcon?: string;
-}
-
-const TechStack = ({ name, customIcon }: TechStackProps) => (
-  <div className="group flex items-center gap-3 p-2.5 rounded-lg hover:bg-accent/10 transition-all duration-300">
-    <div className="relative flex items-center">
-      <div className="absolute inset-0 bg-primary/5 rounded-md blur-sm group-hover:bg-primary/15 transition-all duration-300" />
-      <div className="relative p-2 rounded-md bg-background border shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-        {customIcon ? (
-          <img src={customIcon} alt={name} className="w-5 h-5 object-contain" />
-        ) : (
-          <StackIcon name={name.toLowerCase()} className="w-5 h-5" />
-        )}
-      </div>
-    </div>
-    <span className="font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-      {name}
-    </span>
-  </div>
-);
+import TechStack from '@/components/reusable/tech-stack';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -117,18 +95,18 @@ const Home = () => {
         </div>
 
         <div className="flex flex-wrap gap-4 justify-center md:justify-center">
-          <a
-            href="/projects"
+          <Link
+            to="/projects"
             className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
           >
             View My Projects
-          </a>
-          <a
-            href="/contact"
+          </Link>
+          <Link
+            to="/contact"
             className="inline-flex items-center px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:opacity-90 transition-opacity"
           >
             Let's Connect
-          </a>
+          </Link>
         </div>
       </div>
     </div>

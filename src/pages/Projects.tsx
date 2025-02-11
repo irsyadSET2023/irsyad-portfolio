@@ -1,3 +1,4 @@
+import TechStack from '@/components/reusable/tech-stack';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,7 +7,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 interface Project {
   id: number;
@@ -19,31 +20,6 @@ interface Project {
     customIcon?: string;
   }>;
 }
-
-import StackIcon from 'tech-stack-icons';
-
-interface TechStackProps {
-  name: string;
-  customIcon?: string;
-}
-
-const TechStack = ({ name, customIcon }: TechStackProps) => (
-  <div className="group flex items-center gap-2 p-1.5 rounded-lg hover:bg-accent/10 transition-all duration-300">
-    <div className="relative flex items-center">
-      <div className="absolute inset-0 bg-primary/5 rounded-md blur-sm group-hover:bg-primary/15 transition-all duration-300" />
-      <div className="relative p-1.5 rounded-md bg-background border shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-        {customIcon ? (
-          <img src={customIcon} alt={name} className="w-4 h-4 object-contain" />
-        ) : (
-          <StackIcon name={name.toLowerCase()} className="w-4 h-4" />
-        )}
-      </div>
-    </div>
-    <span className="font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300 text-xs">
-      {name}
-    </span>
-  </div>
-);
 
 const projects: Project[] = [
   {
@@ -95,8 +71,8 @@ const ProjectCard = ({ project }: { project: Project }) => (
         </div>
       </div>
 
-      <a
-        href={project.link}
+      <Link
+        to={project.link}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
@@ -115,7 +91,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
             d="M14 5l7 7m0 0l-7 7m7-7H3"
           />
         </svg>
-      </a>
+      </Link>
     </div>
   </div>
 );
@@ -186,11 +162,15 @@ const ProjectDetail = () => {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/projects">Projects</BreadcrumbLink>
+              <BreadcrumbLink asChild>
+                <Link to="/projects">Projects</Link>
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
