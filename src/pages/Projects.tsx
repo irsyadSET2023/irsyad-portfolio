@@ -8,6 +8,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 interface Project {
@@ -104,52 +105,59 @@ const Projects = () => {
   }, [location]);
 
   return (
-    <div className="min-h-[80vh] py-6 sm:py-8 px-4">
-      <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            {pathSegments.map((segment, index) => {
-              const isLast = index === pathSegments.length - 1;
-              return (
-                <BreadcrumbItem key={segment}>
-                  {isLast ? (
-                    <BreadcrumbPage>{segment}</BreadcrumbPage>
-                  ) : (
-                    <>
-                      <BreadcrumbLink
-                        href={`/${pathSegments.slice(0, index + 1).join('/')}`}
-                      >
-                        {segment}
-                      </BreadcrumbLink>
-                      <BreadcrumbSeparator />
-                    </>
-                  )}
-                </BreadcrumbItem>
-              );
-            })}
-          </BreadcrumbList>
-        </Breadcrumb>
+    <>
+      <Helmet>
+        <title>Projects | Irsyad Portfolio</title>
+      </Helmet>
+      <div className="min-h-[80vh] py-6 sm:py-8 px-4">
+        <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              {pathSegments.map((segment, index) => {
+                const isLast = index === pathSegments.length - 1;
+                return (
+                  <BreadcrumbItem key={segment}>
+                    {isLast ? (
+                      <BreadcrumbPage>{segment}</BreadcrumbPage>
+                    ) : (
+                      <>
+                        <BreadcrumbLink
+                          href={`/${pathSegments
+                            .slice(0, index + 1)
+                            .join('/')}`}
+                        >
+                          {segment}
+                        </BreadcrumbLink>
+                        <BreadcrumbSeparator />
+                      </>
+                    )}
+                  </BreadcrumbItem>
+                );
+              })}
+            </BreadcrumbList>
+          </Breadcrumb>
 
-        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-gradient-flow bg-clip-text text-transparent">
-          Projects
-        </h1>
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-gradient-flow bg-clip-text text-transparent">
+            Projects
+          </h1>
 
-        <p className="text-muted-foreground text-sm sm:text-base">
-          A showcase of my projects, demonstrating my skills and experience in
-          web development.
-        </p>
+          <p className="text-muted-foreground text-sm sm:text-base">
+            A showcase of my projects, demonstrating my skills and experience in
+            web development.
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

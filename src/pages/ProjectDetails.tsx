@@ -10,6 +10,7 @@ import { Link, useParams } from 'react-router-dom';
 import { TechStack } from './Projects'; // Import TechStack from Projects
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 interface Project {
   id: string;
@@ -73,20 +74,25 @@ const ProjectDetails = () => {
 
   if (!project) {
     return (
-      <div className="min-h-[80vh] flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <h2 className="text-2xl font-bold">Project Not Found</h2>
-          <p className="text-muted-foreground">
-            The project you're looking for doesn't exist.
-          </p>
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
-          >
-            ← Back to Projects
-          </Link>
+      <>
+        <Helmet>
+          <title>Project Details | Irsyad Portfolio</title>
+        </Helmet>
+        <div className="min-h-[80vh] flex items-center justify-center">
+          <div className="text-center space-y-4">
+            <h2 className="text-2xl font-bold">Project Not Found</h2>
+            <p className="text-muted-foreground">
+              The project you're looking for doesn't exist.
+            </p>
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 text-primary hover:text-primary/80"
+            >
+              ← Back to Projects
+            </Link>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 

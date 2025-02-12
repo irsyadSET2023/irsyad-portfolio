@@ -1,4 +1,5 @@
 import TechStack from '@/components/reusable/tech-stack';
+import { Helmet } from 'react-helmet-async';
 
 interface Experience {
   companyLogo: string;
@@ -172,24 +173,29 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => (
 
 const Experience = () => {
   return (
-    <div className="min-h-[80vh] py-6 sm:py-8 px-4">
-      <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
-        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-gradient-flow bg-clip-text text-transparent">
-          Experience
-        </h1>
+    <>
+      <Helmet>
+        <title>Experience | Irsyad Portfolio</title>
+      </Helmet>
+      <div className="min-h-[80vh] py-6 sm:py-8 px-4">
+        <div className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-gradient-flow bg-clip-text text-transparent">
+            Experience
+          </h1>
 
-        <p className="text-muted-foreground text-sm sm:text-base">
-          My professional journey as a developer, showcasing my growth and
-          achievements along the way.
-        </p>
+          <p className="text-muted-foreground text-sm sm:text-base">
+            My professional journey as a developer, showcasing my growth and
+            achievements along the way.
+          </p>
 
-        <div className="space-y-4 sm:space-y-6">
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
-          ))}
+          <div className="space-y-4 sm:space-y-6">
+            {experiences.map((experience, index) => (
+              <ExperienceCard key={index} experience={experience} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
